@@ -190,16 +190,16 @@ sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 echo "------------------------------------------"
 echo "        Copying Configs"
 echo "------------------------------------------"
-cd ..
+cd "$HOME" || { echo "Failed to cd to HOME!"; exit 1; }
 rm .bashrc
-git clone https://github.com/zphrio/zphr-linux-config
+
+if [ ! -d "zphr-linux-config" ]; then
+  git clone https://github.com/zphrio/zphr-linux-config
+else
+  cd zphr-linux-conf && git pull && cd ..
+fi
+
 cd zphr-linux-config
-stow bash
-stow fuzzel
-stow ideavim
-stow kitty
-stow ranger
-stow sway
-stow tmux
-stow vim
-stow waybar
+for app in bash fuzzel ideavim kitty ranger sway tmux vim waybar; do
+  stow "$app"
+done
