@@ -208,7 +208,7 @@ rm .bashrc
 if [ ! -d "zphr-linux-config" ]; then
   git clone https://github.com/zphrio/zphr-linux-config
 else
-  cd zphr-linux-conf && git pull && cd ..
+  cd zphr-linux-config && git pull && cd ..
 fi
 
 cd zphr-linux-config
