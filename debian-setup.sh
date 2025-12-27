@@ -183,3 +183,18 @@ sudo apt install -y \
   docker-ce-cli=5:28.5.2-1~debian.13~trixie \
   containerd.io docker-buildx-plugin docker-compose-plugin && \
 sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+echo "------------------------------------------"
+echo "        Copying Configs"
+echo "------------------------------------------"
+git clone https://github.com/zphrio/zphr-linux-config
+cd zphr-linux-config
+stow bash
+stow fuzzel
+stow ideavim
+stow kitty
+stow ranger
+stow sway
+stow tmux
+stow vim
+stow waybar
