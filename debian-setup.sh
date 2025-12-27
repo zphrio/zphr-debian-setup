@@ -53,10 +53,13 @@ xdg-user-dirs-update
 echo "------------------------------------------"
 echo "        1Password Setup"
 echo "------------------------------------------"
-echo "Installing 1Password"
+if command -v 1password &> /dev/null ; then
+  echo "1Password is installed"
+else
 curl -fsSL -o /tmp/1password.deb \
   "https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb"
 sudo apt install -y /tmp/1password.deb
+fi
 
 # Installing system utilities
 echo "------------------------------------------"
@@ -94,12 +97,13 @@ sudo apt install -y \
   sqlite3 \
   stow \
 
-
-
 # Firefox
 echo "------------------------------------------"
 echo "        Firefox Setup"
 echo "------------------------------------------"
+if command -v firefox &> /dev/null; then
+  echo "Firefox is instlled"
+else
 # Remove firefox ESR
 sudo apt purge firefox-esr 'firefox-esr-l10n*' || true
 sudo apt autoremove --purge
@@ -122,6 +126,7 @@ Pin-Priority: 1000
 sudo apt-get update && sudo apt-get install firefox
 # Firefoxpwa
 sudo apt install -y firefoxpwa
+fi
 
 # Fonts
 echo "------------------------------------------"
@@ -159,9 +164,12 @@ flatpak install -y \
 echo "------------------------------------------"
 echo "        Homebrew"
 echo "------------------------------------------"
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install \
-  jesseduffield/lazydocker/lazydocker \
+if command -v brew &> /dev/null; then
+    echo "Homebrew is installed"
+else
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install jesseduffield/lazydocker/lazydocker
+fi
 
 # Docker
 echo "------------------------------------------"
@@ -171,6 +179,9 @@ echo "------------------------------------------"
 #  docker-ce \
 #  docker-ce-cli \
 #  docker-compose-plugin \
+if command -v docker &> /dev/null; then
+  echo "Docker is installed"
+else
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
@@ -186,6 +197,7 @@ sudo apt install -y \
   docker-ce-cli=5:28.5.2-1~debian.13~trixie \
   containerd.io docker-buildx-plugin docker-compose-plugin && \
 sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+fi
 
 echo "------------------------------------------"
 echo "        Copying Configs"
