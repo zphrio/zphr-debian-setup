@@ -39,6 +39,9 @@ sudo apt install -y \
   xdg-user-dirs-gtk \
   kanshi \
 
+sudo apt install -y lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo systemctl enable lightdm
+sudo systemctl set-default graphical.target
 
 echo "------------------------------------------"
 echo "        XDG DIRs SETUP"
