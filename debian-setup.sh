@@ -187,6 +187,7 @@ sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 echo "------------------------------------------"
 echo "        Copying Configs"
 echo "------------------------------------------"
+cd ..
 git clone https://github.com/zphrio/zphr-linux-config
 cd zphr-linux-config
 stow bash
