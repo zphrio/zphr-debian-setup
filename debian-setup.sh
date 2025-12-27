@@ -76,7 +76,7 @@ sudo apt install -y \
   curl \
   grim \
   slurp\
-  swappy
+  swappy \
   blueman \
   tree \
   okular \
