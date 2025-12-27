@@ -188,6 +188,7 @@ echo "------------------------------------------"
 echo "        Copying Configs"
 echo "------------------------------------------"
 cd ..
+rm .bashrc
 git clone https://github.com/zphrio/zphr-linux-config
 cd zphr-linux-config
 stow bash
