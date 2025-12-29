@@ -175,10 +175,6 @@ fi
 echo "------------------------------------------"
 echo "        INSTALLING DOCKER"
 echo "------------------------------------------"
-#  docker-buildx-plugin \
-#  docker-ce \
-#  docker-ce-cli \
-#  docker-compose-plugin \
 if command -v docker &> /dev/null; then
   echo "Docker is installed"
 else
