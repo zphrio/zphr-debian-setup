@@ -142,7 +142,7 @@ sudo apt install -y \
 echo "------------------------------------------"
 echo "        Flatpak"
 echo "------------------------------------------"
-sudo apt install flatpak
+sudo apt install -y flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y \
   app.zen_browser.zen \
